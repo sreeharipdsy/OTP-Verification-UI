@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+
+    <!-- CSS-link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AJAX-link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- jQuery-link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+
+    <!-- Bootstrap-link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Bootstrap-JavaScript-link -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center container app">
+        <div class="card py-5 px-3">
+            <h3 class="m-0 text-center">Phone Verification</h3><br><h2 class="mobile-text text-center" style="font-size: large;">Enter the OTP you received on 89206-6XXXX</h2>
+            <div id="otp" class="d-flex flex-row mt-3 justify-content-center">
+                <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="1" onkeypress="return isNumberKey(event)" autofocus="">
+                <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="2" onkeypress="return isNumberKey(event)">
+		        <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="3" onkeypress="return isNumberKey(event)">
+		        <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="4" onkeypress="return isNumberKey(event)">
+		        <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="5" onkeypress="return isNumberKey(event)">
+                <input type="text" id="input1" class="m-1 text-center " maxlength="1" required tabIndex="6" onkeypress="return isNumberKey(event)">
+            
+                <script>
+                    function isNumberKey(evt)
+                        {
+                        	var charCode = (evt.which) ? evt.which : event.keyCode
+                        	if (charCode > 31 && (charCode < 48 || charCode > 57))
+                        	return false;
+                        	return true;
+                        }
+                </script>
+
+            </div>
+            <div class="text-center mt-4">
+                <p class="textOne">Change Number</p>
+                <p class="textTwo">Re-Send OTP</p>
+            </div>
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-success" style="border-radius: 25px; padding-inline: 4em;">Verify Phone Number</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+
+        $(function() {
+            $('#input1').on('keypress', function(e) {
+                if (e.which == 32){
+                    window.alert("Space not allowed!");
+                    return false;
+                }
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).on('keypress', 'input,select', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
+                console.log($next.length);
+                if (!$next.length) {
+                $next = $('[tabIndex=1]');}
+                $next.focus() .click();
+            }
+        });
+
+        $(':input').keydown(function(e) {
+            if ((e.which == 8 || e.which == 46) && $(this).val() =='') {
+                $(this).prev('input').focus();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
